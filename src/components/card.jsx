@@ -21,7 +21,7 @@ function Card({ticket}){
                             4:"UrgentPrioritycolour.svg"
                     }
     useEffect(()=>{
-        console.log(ticket);
+        // console.log(ticket);
         setid(ticket.id);
         setuser(ticket.userId)
         setstatus(statusImgPath[ticket.status]);

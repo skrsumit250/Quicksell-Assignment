@@ -17,9 +17,11 @@ function Dashboard(){
     const handleOption = (e)=>{
         setGroupBy(e.target.value);
         setDisplay(!display);
+        console.log('GroupBy',GroupBy);
     }
     const handleSort = (e) =>{
-        setSortBy(e.target.value)
+        setSortBy(e.target.value);
+        console.log('SortpBy',SortBy);
     }
     useEffect(() => {
         const fetchData = async () => {
@@ -52,6 +54,7 @@ function Dashboard(){
                         <div className="dropdown-element">
                             <label>Grouping</label>
                             <select onChange={handleOption}>
+                                <option value="null">Group</option>
                                 <option value="status">Status</option>
                                 <option value="user">User</option>
                                 <option value="priority">Priority</option>
@@ -60,6 +63,7 @@ function Dashboard(){
                         <div className="dropdown-element">
                             <label>Ordering</label>
                             <select onChange={handleSort}>
+                            <option value="null">Order</option>
                                 <option value="title">Title</option>
                                 <option value="priority">Priority</option>
                             </select>
@@ -68,9 +72,9 @@ function Dashboard(){
                 }
             </div>
             <div className="box">
-                {GroupBy === 'status' && <Status tickets={tickets}/>}
-                {GroupBy == 'user' && <User/>}
-                {GroupBy == 'priority' && <Priority/>}
+                {GroupBy == 'status' && <Status tickets={tickets} sortBy={SortBy}/>}
+                {GroupBy == 'user' && <User tickets={tickets}  users={users} sortBy={SortBy}/>}
+                {GroupBy == 'priority' && <Priority tickets={tickets} sortBy={SortBy}/>}
             </div>
         </>
     )

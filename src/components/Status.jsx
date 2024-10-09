@@ -1,7 +1,7 @@
 import '../styles/status.css'
 import Column from "./Column";
 import { useState,useEffect } from 'react';
-function Status({tickets}){
+function Status({tickets,sortBy}){
     const [statusData,setStatusData] = useState({
         "Backlog": [],
         "Todo": [],
@@ -9,21 +9,26 @@ function Status({tickets}){
         "Done": [],
         "Cancelled": []
     });
-    const statusImgPath = {"Todo":"Todo.svg",
-                           "In progress":"inProgress.svg",
-                           "Backlog":"Backlog.svg",
-                           "Done":"Done.svg",
-                           "Cancelled":"Cancelled.svg"
-                          }
+
     useEffect(() => {
-        console.log(tickets);
+        // console.log(tickets);
+        const sortedTickets = [...tickets].sort((a, b) => {
+            if (sortBy === 'priority') {
+                return b.priority - a.priority;
+            } 
+            else if (sortBy === 'title') {
+                return a.title.localeCompare(b.title); 
+            }
+            return 0;
+        });
+
         const updatedStatusData = {};
         Object.keys(statusData).forEach((status) => {
-            updatedStatusData[status] = tickets.filter((ticket) => ticket.status === status);
+            updatedStatusData[status] = sortedTickets.filter((ticket) => ticket.status === status);
         });
         setStatusData(updatedStatusData);
-        console.log(statusData);
-    }, [tickets])
+        // console.log(statusData);
+    }, [tickets,sortBy])
     
     return(
         <>
@@ -32,8 +37,7 @@ function Status({tickets}){
                 <Column
                     key={index}
                     data={statusData[status]}
-                    status={status}
-                    imgPath={statusImgPath[status]}
+                    group={['status',status]}
                 />
             ))}
             </div>

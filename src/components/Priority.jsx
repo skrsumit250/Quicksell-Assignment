@@ -2,7 +2,7 @@ import '../styles/status.css'
 import Column from "./Column";
 import { useState,useEffect } from 'react';
 function Priority({tickets,sortBy}){
-    console.log(tickets);
+    // console.log(tickets);
     const [priorityData,setPriorityData] = useState({
         '0': [],
         '1': [],

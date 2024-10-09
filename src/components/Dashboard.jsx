@@ -7,21 +7,23 @@ import Priority from "./Priority";
 function Dashboard(){
     
     const [display,setDisplay] = useState(false);
-    const [GroupBy,setGroupBy] = useState('status');
-    const [SortBy,setSortBy] = useState('');
+    const [GroupBy, setGroupBy] = useState(localStorage.getItem('GroupBy') || 'status');
+const [SortBy, setSortBy] = useState(localStorage.getItem('SortBy') || '');
     const [tickets,setTickets] = useState([]);
     const [users,setUsers] = useState([]);
     const showDropdown = ()=>{
         setDisplay(!display);
     }
     const handleOption = (e)=>{
-        setGroupBy(e.target.value);
+        const selectedGroupBy = e.target.value;
+        setGroupBy(selectedGroupBy);
+        localStorage.setItem('GroupBy', selectedGroupBy);
         setDisplay(!display);
-        console.log('GroupBy',GroupBy);
     }
     const handleSort = (e) =>{
-        setSortBy(e.target.value);
-        console.log('SortpBy',SortBy);
+        const selectedSortBy = e.target.value;
+        setSortBy(selectedSortBy);
+        localStorage.setItem('SortBy', selectedSortBy);
     }
     useEffect(() => {
         const fetchData = async () => {

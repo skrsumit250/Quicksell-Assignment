@@ -67,4 +67,35 @@
         width: 80vw;
         padding: 5vw;
     }
+    .card-head p{
+        font-size: 3VW;
+    }
+    .card-description{
+        margin: 2vw 0 2vw 0;
+    }
+    .card-description img{
+        margin-right: 2vw;
+        width: 5vw;
+        height: 5vw;
+    }
+    .card-description p{
+        font-size:5vw;
+    }
+    .card-req{
+        padding: 0.2vw 0.2vw 0.2vw 0;
+        border-radius: 5px;
+    }
+    .card-req img{
+        width: 5vw;
+        height: 5vw;
+    }
+    .card-req p{
+        font-size: 3vw;
+        margin-left: 3vw;
+    }
+    #bottom-img{
+        width: 5vw;
+        height: 5vw;
+        margin-right: 3vw;
+    }
 }

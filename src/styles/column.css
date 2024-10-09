@@ -24,13 +24,21 @@
 @media only screen and (max-width: 700px) {
     .column{
         width: 90vw;
-
+        height: inherit;
     }
     .column-head{
         margin: 5vw 0 5vw 0;
     }
-    .column-head-left p{
-        font-size: 4vw;
+    .column-head-left img{
+      width: 5vw;
+      height: 5vw;
     }
+    .column-head-left p{
+        font-size: 5vw;
+    }
+    .column-head-right img{
+        width: 6vw;
+        height: 6vw;
+      }
 
 }
